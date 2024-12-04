@@ -1,6 +1,35 @@
 # test-mermaid
 
 ```mermaid
+sequenceDiagram
+    participant ผู้ใช้
+    participant ส่วนหน้า (Frontend)
+    participant FacebookAPI
+    participant ส่วนหลัง (Backend)
+
+    ผู้ใช้->>ส่วนหน้า (Frontend): คลิก "เข้าสู่ระบบด้วย Facebook"
+    ส่วนหน้า (Frontend)->>FacebookAPI: เปลี่ยนเส้นทางไปยังหน้าเข้าสู่ระบบ Facebook
+    FacebookAPI-->>ผู้ใช้: แสดงหน้าเข้าสู่ระบบ Facebook
+    ผู้ใช้->>FacebookAPI: กรอกข้อมูลบัญชีและส่งข้อมูล
+    FacebookAPI-->>ส่วนหน้า (Frontend): ส่งรหัสอนุญาต (Authorization Code)
+    ส่วนหน้า (Frontend)->>ส่วนหลัง (Backend): ส่งรหัสอนุญาต
+    ส่วนหลัง (Backend)->>FacebookAPI: ตรวจสอบรหัสและขอข้อมูลผู้ใช้
+    FacebookAPI-->>ส่วนหลัง (Backend): ส่งข้อมูลผู้ใช้กลับมา
+    ส่วนหลัง (Backend)-->>ส่วนหน้า (Frontend): ส่งโทเค็นหรือสถานะการเข้าสู่ระบบ
+    ส่วนหน้า (Frontend)-->>ผู้ใช้: แสดงข้อความ "เข้าสู่ระบบสำเร็จ"
+```
+
+```mermaid
+timeline
+    title History of Social Media Platform
+    2002 : LinkedIn
+    2004 : Facebook
+         : Google
+    2005 : Youtube
+    2006 : Twitter
+```
+
+```mermaid
 classDiagram
     class Class01
     class Class02
